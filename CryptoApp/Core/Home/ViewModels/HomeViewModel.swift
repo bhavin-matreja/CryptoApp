@@ -23,11 +23,36 @@ class HomeViewModel: ObservableObject {
     }
     
     func addSubscribers() {
+        
+        // below search subcriber is already subscribed to coins, so removing this
+        /*
         dataService.$allCoins
             .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
             .store(in: &cancellable)
+         */
+        
+        $searchText
+            .combineLatest(dataService.$allCoins)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map(filterCoins)
+            .sink { [weak self] (returnedCoins) in
+                self?.allCoins = returnedCoins
+            }
+            .store(in: &cancellable)
+    }
+    
+    private func filterCoins(text:String, coins:[CoinModel]) -> [CoinModel] {
+        guard !text.isEmpty else {
+            return coins
+        }
+        let lowercasedText = text.lowercased()
+        return coins.filter { coins in
+            coins.name.lowercased().contains(lowercasedText) ||
+            coins.symbol.lowercased().contains(lowercasedText) ||
+            coins.id.lowercased().contains(lowercasedText)
+        }
     }
     
     func getPortfolioCoins() {
