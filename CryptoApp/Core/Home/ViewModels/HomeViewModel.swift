@@ -16,10 +16,15 @@ class HomeViewModel: ObservableObject {
     @Published var porfolioCoins: [CoinModel] = []
     @Published var searchText: String = ""
     @Published var isLoading: Bool = false
+    @Published var sortOption: SortOption = .holdings
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
     private var cancellables = Set<AnyCancellable>()
+    
+    enum SortOption {
+        case rank, rankReversed, holdings, holdingsRevered, price, priceRevered
+    }
     
     init() {
         addSubscribers()
@@ -38,9 +43,9 @@ class HomeViewModel: ObservableObject {
          */
         
         $searchText
-            .combineLatest(coinDataService.$allCoins)
+            .combineLatest(coinDataService.$allCoins, $sortOption)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .map(filterCoins)
+            .map(filterAndSortCoins)
             .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
@@ -62,6 +67,58 @@ class HomeViewModel: ObservableObject {
         coinDataService.getCoins()
         marketDataService.getData()
         HapticManager.notification(type: .success) // small vibration on device when we reload
+    }
+    
+    private func filterAndSortCoins(text:String, coins:[CoinModel], sort: SortOption) -> [CoinModel] {
+        var filteredCoins = filterCoins(text: text, coins: coins)
+        sortCoinsAndReturnSameArray(sort: sort, coins: &filteredCoins)
+//        let sortedCoins = sortCoins(sort: sort, coins: filteredCoins)
+        return filteredCoins
+    }
+    
+    
+    private func sortCoinsAndReturnSameArray(sort: SortOption, coins: inout [CoinModel]) {
+        switch sort {
+        case .rank, .holdings:
+            coins.sort { coin1, coin2 in
+                return coin1.rank < coin2.rank
+            }
+            // shorter version coins.sorted(by: { $0.rank < $1.rank })
+        case .rankReversed, .holdingsRevered:
+            coins.sort(by: { $0.rank > $1.rank })
+        case .price:
+            coins.sort(by: { $0.currentPrice > $1.currentPrice })
+        case .priceRevered:
+            coins.sort(by: { $0.currentPrice < $1.currentPrice })
+        }
+    }
+    
+    private func sortCoins(sort: SortOption, coins: [CoinModel]) -> [CoinModel] {
+        switch sort {
+        case .rank, .holdings:
+            return coins.sorted { coin1, coin2 in
+                return coin1.rank < coin2.rank
+            }
+            // shorter version coins.sorted(by: { $0.rank < $1.rank })
+        case .rankReversed, .holdingsRevered:
+            return coins.sorted(by: { $0.rank > $1.rank })
+        case .price:
+            return coins.sorted(by: { $0.currentPrice > $1.currentPrice })
+        case .priceRevered:
+            return coins.sorted(by: { $0.currentPrice < $1.currentPrice })
+        }
+    }
+    
+    private func sortPortfolioCoinsIfNeeded (coins: [CoinModel]) -> [CoinModel] {
+        // will only sort by holdings or reversedholdings if needed
+        switch sortOption {
+        case .holdings:
+            return coins.sorted (by: { $0.currentHoldingsValue > $1.currentHoldingsValue })
+        case .holdingsRevered:
+            return coins.sorted(by: { $0.currentHoldingsValue < $1.currentHoldingsValue })
+        default:
+            return coins
+        }
     }
     
     private func filterCoins(text:String, coins:[CoinModel]) -> [CoinModel] {
