@@ -16,6 +16,10 @@
 		F13FF3F92DD0EC8F00AF4146 /* StatisticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FF3F82DD0EC8E00AF4146 /* StatisticModel.swift */; };
 		F13FF3FB2DD0ED3800AF4146 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FF3FA2DD0ED3800AF4146 /* StatisticView.swift */; };
 		F13FF3FD2DD0F33300AF4146 /* HomeStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FF3FC2DD0F33300AF4146 /* HomeStatsView.swift */; };
+		F1489E072DD34B7400886B05 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1489E062DD34B7400886B05 /* String.swift */; };
+		F1489E0B2DD3527100886B05 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1489E0A2DD3527100886B05 /* SettingsView.swift */; };
+		F15DC9E62DD364EA00B0E670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F15DC9E52DD364EA00B0E670 /* LaunchScreen.storyboard */; };
+		F15DC9E82DD3679900B0E670 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15DC9E72DD3679900B0E670 /* LaunchView.swift */; };
 		F19958362DD256C7000A920E /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19958352DD256C7000A920E /* HapticManager.swift */; };
 		F199583B2DD2649D000A920E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F199583A2DD2649D000A920E /* DetailView.swift */; };
 		F19E53592DCF6EF7005871BC /* CryptoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E53582DCF6EF7005871BC /* CryptoAppApp.swift */; };
@@ -53,6 +57,11 @@
 		F13FF3F82DD0EC8E00AF4146 /* StatisticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticModel.swift; sourceTree = "<group>"; };
 		F13FF3FA2DD0ED3800AF4146 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		F13FF3FC2DD0F33300AF4146 /* HomeStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStatsView.swift; sourceTree = "<group>"; };
+		F1489E062DD34B7400886B05 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		F1489E0A2DD3527100886B05 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F15DC9E22DD3647800B0E670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F15DC9E52DD364EA00B0E670 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F15DC9E72DD3679900B0E670 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		F19958352DD256C7000A920E /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		F199583A2DD2649D000A920E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F19E53552DCF6EF7005871BC /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +109,39 @@
 			path = CoinImage;
 			sourceTree = "<group>";
 		};
+		F1489E082DD3523100886B05 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F1489E092DD3525000886B05 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F1489E092DD3525000886B05 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F1489E0A2DD3527100886B05 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F15DC9E32DD364D200B0E670 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				F15DC9E42DD364DB00B0E670 /* Views */,
+			);
+			path = "Launch Screen";
+			sourceTree = "<group>";
+		};
+		F15DC9E42DD364DB00B0E670 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F15DC9E52DD364EA00B0E670 /* LaunchScreen.storyboard */,
+				F15DC9E72DD3679900B0E670 /* LaunchView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F19958372DD26458000A920E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +186,7 @@
 		F19E53572DCF6EF7005871BC /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
+				F15DC9E22DD3647800B0E670 /* Info.plist */,
 				F19E53872DCFBD17005871BC /* Utilities */,
 				F19E53772DCF890D005871BC /* Models */,
 				F19E536B2DCF7504005871BC /* Core */,
@@ -172,6 +215,7 @@
 				F19E537E2DCF8F74005871BC /* PreviewProvider.swift */,
 				F19E53802DCF9399005871BC /* Double.swift */,
 				F13FF3F62DD0E49D00AF4146 /* UIApplication.swift */,
+				F1489E062DD34B7400886B05 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -179,6 +223,8 @@
 		F19E536B2DCF7504005871BC /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F15DC9E32DD364D200B0E670 /* Launch Screen */,
+				F1489E082DD3523100886B05 /* Settings */,
 				F19958372DD26458000A920E /* Detail */,
 				F19E53712DCF78A6005871BC /* Components */,
 				F19E536C2DCF750B005871BC /* Home */,
@@ -327,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F15DC9E62DD364EA00B0E670 /* LaunchScreen.storyboard in Resources */,
 				F19E53622DCF6EF8005871BC /* Preview Assets.xcassets in Resources */,
 				F19E535F2DCF6EF8005871BC /* Assets.xcassets in Resources */,
 			);
@@ -344,6 +391,7 @@
 				F19958362DD256C7000A920E /* HapticManager.swift in Sources */,
 				F19E537B2DCF8EF8005871BC /* CoinRowView.swift in Sources */,
 				F1C60AEF2DD2195200D2506E /* XMarkButton.swift in Sources */,
+				F1489E0B2DD3527100886B05 /* SettingsView.swift in Sources */,
 				F19E53832DCF9E9C005871BC /* HomeViewModel.swift in Sources */,
 				F19E535B2DCF6EF7005871BC /* ContentView.swift in Sources */,
 				F13FF3F12DD0B50800AF4146 /* LocalFileManager.swift in Sources */,
@@ -351,6 +399,7 @@
 				F19E53762DCF82B8005871BC /* CircleAnimationView.swift in Sources */,
 				F13FF3FB2DD0ED3800AF4146 /* StatisticView.swift in Sources */,
 				F13FF3EB2DD0740700AF4146 /* CoinImageView.swift in Sources */,
+				F1489E072DD34B7400886B05 /* String.swift in Sources */,
 				F19E53702DCF752D005871BC /* HomeView.swift in Sources */,
 				F1CC10942DD2FB06001214A0 /* DetailViewModel.swift in Sources */,
 				F13FF3F72DD0E49D00AF4146 /* UIApplication.swift in Sources */,
@@ -368,6 +417,7 @@
 				F19E537F2DCF8F74005871BC /* PreviewProvider.swift in Sources */,
 				F1C60AED2DD216C500D2506E /* PortfolioView.swift in Sources */,
 				F19E53812DCF9399005871BC /* Double.swift in Sources */,
+				F15DC9E82DD3679900B0E670 /* LaunchView.swift in Sources */,
 				F1CC10962DD2FB2F001214A0 /* CoinDetailDataService.swift in Sources */,
 				F13FF3ED2DD075EA00AF4146 /* CoinImageService.swift in Sources */,
 				F19E53792DCF891F005871BC /* CoinModel.swift in Sources */,
@@ -506,10 +556,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CryptoApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CryptoApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Tracker";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -534,10 +587,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CryptoApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CryptoApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Crypto Tracker";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

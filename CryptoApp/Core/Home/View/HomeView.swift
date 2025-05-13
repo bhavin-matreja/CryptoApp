@@ -12,7 +12,8 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio = false // animate right
     @State private var showPortfolioView = false // new sheet
-    @State private var showDetailView = false
+    @State private var showDetailView = false // new sheet
+    @State private var showSettingsView = false
     
     var body: some View {
         ZStack {
@@ -23,6 +24,7 @@ struct HomeView: View {
                     PorfolioView()
                         .environmentObject(vm)
                 })
+            // .sheet(..) cannot add two sheets in same hierarchy
             
             // content layer
             VStack {
@@ -45,6 +47,9 @@ struct HomeView: View {
                 }
                 Spacer(minLength: 0)
             }
+            .sheet(isPresented: $showSettingsView, content: {
+                SettingsView()
+            })
         }
     }
 }
@@ -66,6 +71,8 @@ extension HomeView {
                  .onTapGesture {
                      if showPortfolio {
                          showPortfolioView.toggle()
+                     } else {
+                         showSettingsView.toggle()
                      }
                  }
                  .background(

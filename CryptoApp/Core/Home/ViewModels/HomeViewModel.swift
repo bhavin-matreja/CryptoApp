@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     
     @Published var allCoins: [CoinModel] = []
     @Published var porfolioCoins: [CoinModel] = []
+    @Published var showLaunchScreen: Bool = true
     @Published var searchText: String = ""
     @Published var isLoading: Bool = false
     @Published var sortOption: SortOption = .holdings
@@ -170,9 +171,10 @@ class HomeViewModel: ObservableObject {
     }
     
     func getPortfolioCoins() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.porfolioCoins.append(dev.coin)
             self.porfolioCoins.append(dev.coin)
+            self.showLaunchScreen = false
         }
 
     }
