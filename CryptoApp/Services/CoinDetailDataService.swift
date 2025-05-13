@@ -26,6 +26,7 @@ class CoinDetailDataService {
         
         coinDetailSubscription = NetworkingManager.download(url: url)
             .decode(type: CoinDetailModel.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedCoinsDetails) in
                 self?.coinDetails = returnedCoinsDetails
                 // Publisher basically assumes that this url will send data over time, so when we call it stays listening in case we have more published values in the future. But we know its just a get request, so it will hit once only.
